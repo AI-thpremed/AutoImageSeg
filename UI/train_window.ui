@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TrainWindow</class>
+ <widget class="QWidget" name="TrainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>465</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Train Config</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupPaths">
+     <property name="title">
+      <string>Image Path</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelTrainImg">
+        <property name="text">
+         <string>Training Image Path：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_train_img">
+          <property name="text">
+           <string>G:\2025work\autoimageseg\segment-test\dataset\train_rvo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_train_img">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelTrainJson">
+        <property name="text">
+         <string>Training LabelMe JSON Path：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_train_json">
+          <property name="text">
+           <string>G:\2025work\autoimageseg\segment-test\dataset\train_rvo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_train_json">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelTestImg">
+        <property name="text">
+         <string>Test Image Path：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_test_img">
+          <property name="text">
+           <string>G:\2025work\autoimageseg\segment-test\dataset\test_rvo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_test_img">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelTestJson">
+        <property name="text">
+         <string>Test LabelMe JSON Path：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_test_json">
+          <property name="text">
+           <string>G:\2025work\autoimageseg\segment-test\dataset\test_rvo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_test_json">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupParams">
+     <property name="title">
+      <string>Training Setting</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelAlgo">
+        <property name="text">
+         <string>Algorithm:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+          <widget class="QComboBox" name="combo_algo">
+              <item>
+                  <property name="text">
+                      <string>MobileUNet</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>FastSCNN</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>LinkNet</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNet</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNext</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>AttU_Net</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>NestedUNet</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNetResnet</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>FCN</string>
+                  </property>
+              </item>
+          </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelLoss">
+        <property name="text">
+         <string>Loss Function:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="combo_loss">
+        <item>
+         <property name="text">
+          <string>CrossEntropyLoss</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CE_DiceLoss</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FocalLoss</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LovaszSoftmax</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelEpochs">
+        <property name="text">
+         <string>Epoch:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spin_epochs">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelPolicy">
+        <property name="text">
+         <string>Label Rendering Policy:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_label_filter">
+          <property name="placeholderText">
+           <string>Enter labels (e.g., cat;dog;person)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="line_policy">
+          <property name="placeholderText">
+           <string>Enter policies (e.g., Closure;Follow;Follow)</string>
+          </property>
+         </widget>
+        </item>
+
+
+
+
+        <item>
+         <widget class="QTableWidget" name="table_policy">
+          <property name="columnCount">
+           <number>2</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>false</bool>
+          </attribute>
+          <row/>
+          <column>
+           <property name="text">
+            <string>Label</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Policy</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignLeading|AlignVCenter</set>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="hLayoutButtons">
+     <item>
+      <widget class="QPushButton" name="btn_check">
+       <property name="text">
+        <string>Check Before Train</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_start_train">
+       <property name="text">
+        <string>Start Training</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_stop">
+       <property name="text">
+        <string>Stop Training</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupLog">
+     <property name="title">
+      <string>Log</string>
+     </property>
+     <layout class="QVBoxLayout" name="vLayoutLog">
+      <item>
+       <widget class="QTextEdit" name="text_log">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

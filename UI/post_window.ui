@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>PostForm</class>
+  <widget class="QWidget" name="PostForm">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>550</width>
+        <height>300</height>
+      </rect>
+    </property>
+    <property name="windowTitle">
+      <string>Post-Processing</string>
+    </property>
+    <property name="styleSheet">
+      <string>
+        QWidget { font-family: "Microsoft YaHei"; font-size: 10pt; }
+        QGroupBox { border: 1px solid #CCCCCC; border-radius: 4px; margin-top: 10px; padding-top: 15px; }
+        QPushButton { min-width: 80px; padding: 5px; }
+        QLineEdit { padding: 5px; }
+      </string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+        <number>10</number>
+      </property>
+      <property name="leftMargin">
+        <number>10</number>
+      </property>
+      <property name="topMargin">
+        <number>10</number>
+      </property>
+      <property name="rightMargin">
+        <number>10</number>
+      </property>
+      <property name="bottomMargin">
+        <number>10</number>
+      </property>
+
+<!-- 输入文件组 -->
+<!-- 输入文件组 -->
+<item>
+  <widget class="QGroupBox" name="groupInput">
+    <property name="title">
+      <string>File Path</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+        <layout class="QFormLayout" name="formLayout_mask">
+          <item row="0" column="0">
+            <widget class="QLabel" name="label_mask">
+              <property name="text">
+                <string>Mask Path:</string>
+              </property>
+              <property name="toolTip">
+                <string>Select the path to the mask file.</string>
+              </property>
+            </widget>
+          </item>
+          <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_mask_input">
+              <item>
+                <widget class="QLineEdit" name="line_mask">
+                  <property name="toolTip">
+                    <string>Enter the path to the mask file or use the 'Select' button to browse.</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="btn_mask">
+                  <property name="text">
+                    <string>Select</string>
+                  </property>
+                  <property name="toolTip">
+                    <string>Browse for the mask file.</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QFormLayout" name="formLayout_json">
+          <item row="0" column="0">
+            <widget class="QLabel" name="label_json">
+              <property name="text">
+                <string>Label Mapping File:</string>
+              </property>
+              <property name="toolTip">
+                <string>Select the path to the label mapping file.</string>
+              </property>
+            </widget>
+          </item>
+          <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_json_input">
+              <item>
+                <widget class="QLineEdit" name="line_json">
+                  <property name="toolTip">
+                    <string>Enter the path to the label mapping file or use the 'Select' button to browse.</string>
+                  </property>
+                </widget>
+              </item>
+              <item>
+                <widget class="QPushButton" name="btn_json">
+                  <property name="text">
+                    <string>Select</string>
+                  </property>
+                  <property name="toolTip">
+                    <string>Browse for the label mapping file.</string>
+                  </property>
+                </widget>
+              </item>
+            </layout>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QFormLayout" name="formLayout_suffix">
+          <item row="0" column="0">
+            <widget class="QLabel" name="label_suffix">
+              <property name="text">
+                <string>Original Image Suffix:</string>
+              </property>
+              <property name="toolTip">
+                <string>Required for generating JSON files. The suffix must match the original image names (including suffix) to display correctly in LabelMe. It is recommended to keep the same suffix for all original images.</string>
+              </property>
+            </widget>
+          </item>
+          <item row="0" column="1">
+            <widget class="QComboBox" name="combo_suffix">
+              <item>
+                <property name="text">
+                  <string>.jpg</string>
+                </property>
+              </item>
+              <item>
+                <property name="text">
+                  <string>.png</string>
+                </property>
+              </item>
+              <item>
+                <property name="text">
+                  <string>.jpeg</string>
+                </property>
+              </item>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+</item>
+
+
+      <!-- 操作按钮组 -->
+      <item>
+        <widget class="QGroupBox" name="groupActions">
+          <property name="title">
+            <string>Post Processing</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+              <widget class="QPushButton" name="btn_color">
+                <property name="text">
+                  <string>Transfer Masks into Color Images</string>
+                </property>
+                <property name="styleSheet">
+                  <string>background-color: #2196F3; color: white;</string>
+                </property>
+              </widget>
+            </item>
+
+            <item>
+              <widget class="QPushButton" name="btn_labelme">
+                <property name="text">
+                  <string>Transfer Masks into LabelMe Files</string>
+                </property>
+                <property name="styleSheet">
+                  <string>background-color: #4CAF50; color: white;</string>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </widget>
+      </item>
+
+      <!-- 底部留空 -->
+      <item>
+        <spacer name="verticalSpacer">
+          <property name="orientation">
+            <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+              <width>20</width>
+              <height>40</height>
+            </size>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <resources/>
+  <connections/>
+</ui>

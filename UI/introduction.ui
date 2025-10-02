@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WelcomeWindow</class>
+ <widget class="QWidget" name="WelcomeWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Welcome</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <!-- ===== 1. Logo 和软件名称 ===== -->
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutLogo">
+     <item>
+      <widget class="QLabel" name="labelLogo">
+       <property name="text">
+        <string/>
+       </property>
+
+           <property name="styleSheet">
+        <string>max-width: 180px; max-height: 120px;</string>
+    </property>
+    <property name="pixmap">
+        <pixmap>images\AUTOimageseg.png</pixmap>
+    </property>
+    <property name="scaledContents">
+        <bool>true</bool>
+    </property>
+
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelSoftwareName">
+       <property name="text">
+        <string>AutoImageSeg: Zero-Code Image Segmentation v1.0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="labelIntroduction">
+     <property name="text">
+<string>This is an open-source software that enables training and inference for image segmentation without coding. It supports various AI models and allows seamless iterative construction of models with LabelMe data. It is suitable for medical imaging and industrial structural segmentation scenarios, helping users to quickly build image segmentation models at a low cost and validate the performance of different models.</string>     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <layout class="QFormLayout" name="formLayoutLinks">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelGitHub">
+       <property name="text">
+        <string>GitHub:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="labelGitHubLink">
+       <property name="text">
+        <string>https://github.com/AI-thpremed/AutoImageSeg</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+       <property name="textInteractionFlags">
+        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+       </property>
+      </widget>
+     </item>
+<!--     <item row="1" column="0">-->
+<!--      <widget class="QLabel" name="labelWebsite">-->
+<!--       <property name="text">-->
+<!--        <string>官网地址：</string>-->
+<!--       </property>-->
+<!--      </widget>-->
+<!--     </item>-->
+<!--     <item row="1" column="1">-->
+<!--      <widget class="QLabel" name="labelWebsiteLink">-->
+<!--       <property name="text">-->
+<!--        <string>https://www.yourwebsite.com</string>-->
+<!--       </property>-->
+<!--       <property name="openExternalLinks">-->
+<!--        <bool>true</bool>-->
+<!--       </property>-->
+<!--       <property name="textInteractionFlags">-->
+<!--        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>-->
+<!--       </property>-->
+<!--      </widget>-->
+<!--     </item>-->
+<!--     <item row="2" column="0">-->
+<!--      <widget class="QLabel" name="labelHelp">-->
+<!--       <property name="text">-->
+<!--        <string>帮助文档：</string>-->
+<!--       </property>-->
+<!--      </widget>-->
+<!--     </item>-->
+<!--     <item row="2" column="1">-->
+<!--      <widget class="QLabel" name="labelHelpLink">-->
+<!--       <property name="text">-->
+<!--        <string>https://www.yourwebsite.com/help</string>-->
+<!--       </property>-->
+<!--       <property name="openExternalLinks">-->
+<!--        <bool>true</bool>-->
+<!--       </property>-->
+<!--       <property name="textInteractionFlags">-->
+<!--        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>-->
+<!--       </property>-->
+<!--      </widget>-->
+<!--     </item>-->
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

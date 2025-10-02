@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InferWindow</class>
+ <widget class="QWidget" name="InferWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Inference</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <!-- 路径配置 -->
+   <item>
+    <widget class="QGroupBox" name="groupPaths">
+     <property name="title">
+      <string>Paths</string>
+     </property>
+     <layout class="QFormLayout">
+      <!-- 模型目录 -->
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelModel">
+        <property name="text">
+         <string>Model Result:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_model"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_model">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+
+      <!-- 待推理图片 -->
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelImg">
+        <property name="text">
+         <string>Image Dir:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QLineEdit" name="line_img"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_img">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- 按钮 -->
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QPushButton" name="btn_check">
+       <property name="text">
+        <string>Check</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_start">
+       <property name="text">
+        <string>Start Inference</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- 日志 -->
+   <item>
+    <widget class="QGroupBox" name="groupLog">
+     <property name="title">
+      <string>Log</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <item>
+       <widget class="QTextEdit" name="text_log"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
