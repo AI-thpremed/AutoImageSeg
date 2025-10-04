@@ -74,6 +74,13 @@ These executable files have integrated the required PyTorch versions, so they ca
 This project is licensed under the Apache License 2.0. See the LICENSE file for details.
 
 
+## Labelme Software
+
+- **Google Drive**: [Labelme.exe](https://drive.google.com/file/d/1m_vfL2u4ooFcc6MuEK2ao-cSQmr-Vbw_/view?usp=sharing)
+- **Baidu Cloud Disk**: [Labelme.exe](https://pan.baidu.com/s/1-izl2Mj3Y2yHCR-8omoszw) (Extraction Code: k4ac)
+
+We use Labelme for image annotation. It's a great tool and our JSON label format is based on its default structure.
+
 
 
 ## Contact
