@@ -32,7 +32,7 @@
         <item>
          <widget class="QLineEdit" name="line_train_img">
           <property name="text">
-           <string>G:\2025work\autoimageseg\segment-test\dataset\train_rvo</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -57,7 +57,7 @@
         <item>
          <widget class="QLineEdit" name="line_train_json">
           <property name="text">
-           <string>G:\2025work\autoimageseg\segment-test\dataset\train_rvo</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -82,7 +82,7 @@
         <item>
          <widget class="QLineEdit" name="line_test_img">
           <property name="text">
-           <string>G:\2025work\autoimageseg\segment-test\dataset\test_rvo</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -107,7 +107,7 @@
         <item>
          <widget class="QLineEdit" name="line_test_json">
           <property name="text">
-           <string>G:\2025work\autoimageseg\segment-test\dataset\test_rvo</string>
+           <string></string>
           </property>
          </widget>
         </item>

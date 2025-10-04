@@ -1,15 +1,3 @@
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # -*- coding: utf-8 -*-
 
 ################################################################################
@@ -259,16 +247,16 @@ class Ui_TrainWindow(object):
         TrainWindow.setWindowTitle(QCoreApplication.translate("TrainWindow", u"Train Config", None))
         self.groupPaths.setTitle(QCoreApplication.translate("TrainWindow", u"Image Path", None))
         self.labelTrainImg.setText(QCoreApplication.translate("TrainWindow", u"Training Image Path\uff1a", None))
-        self.line_train_img.setText(QCoreApplication.translate("TrainWindow", u"G:\\2025work\\autoimageseg\\segment-test\\dataset\\train_rvo", None))
+        self.line_train_img.setText("")
         self.btn_train_img.setText(QCoreApplication.translate("TrainWindow", u"Select", None))
         self.labelTrainJson.setText(QCoreApplication.translate("TrainWindow", u"Training LabelMe JSON Path\uff1a", None))
-        self.line_train_json.setText(QCoreApplication.translate("TrainWindow", u"G:\\2025work\\autoimageseg\\segment-test\\dataset\\train_rvo", None))
+        self.line_train_json.setText("")
         self.btn_train_json.setText(QCoreApplication.translate("TrainWindow", u"Select", None))
         self.labelTestImg.setText(QCoreApplication.translate("TrainWindow", u"Test Image Path\uff1a", None))
-        self.line_test_img.setText(QCoreApplication.translate("TrainWindow", u"G:\\2025work\\autoimageseg\\segment-test\\dataset\\test_rvo", None))
+        self.line_test_img.setText("")
         self.btn_test_img.setText(QCoreApplication.translate("TrainWindow", u"Select", None))
         self.labelTestJson.setText(QCoreApplication.translate("TrainWindow", u"Test LabelMe JSON Path\uff1a", None))
-        self.line_test_json.setText(QCoreApplication.translate("TrainWindow", u"G:\\2025work\\autoimageseg\\segment-test\\dataset\\test_rvo", None))
+        self.line_test_json.setText("")
         self.btn_test_json.setText(QCoreApplication.translate("TrainWindow", u"Select", None))
         self.groupParams.setTitle(QCoreApplication.translate("TrainWindow", u"Training Setting", None))
         self.labelAlgo.setText(QCoreApplication.translate("TrainWindow", u"Algorithm:", None))
@@ -302,3 +290,4 @@ class Ui_TrainWindow(object):
         self.groupLog.setTitle(QCoreApplication.translate("TrainWindow", u"Log", None))
     # retranslateUi
 
+        self.table_policy.horizontalHeader().setStretchLastSection(True)

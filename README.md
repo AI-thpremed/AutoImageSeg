@@ -25,8 +25,28 @@ The `datasets` folder contains the following datasets:
 - **REFUGE Dataset**: A dataset for optic disc and cup segmentation.  
   [Google Drive Link](https://drive.google.com/file/d/1vKsc7jah7bBFb0Eqi-luJUIu3fSEjE-j/view?usp=sharing)
   [grand-challenge](https://refuge.grand-challenge.org/)
+
+
+
+## Executable Files
+
+Nuitka is recommended for packaging Python applications into standalone executable files.
+
+### CPU Version
+
+- **Google Drive**: [pytorch-cpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1KmSBrP5MwUPEJE4tAe3rZagi7YcCPs5O/view?usp=sharing)
+- **Baidu Cloud Disk**: [pytorch-cpu-autoimageseg-v1.zip](https://pan.baidu.com/s/16bVB5pPOu2E-zx-Q_ERAUQ) (Extraction Code: 5zwq)
+
+### GPU Version
+
+- **Google Drive**: [pytorch-gpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1be8jiUEMyk7Ngh6sF1qo67Fu12VHiQHq/view?usp=sharing)
+- **Baidu Cloud Disk**: [pytorch-gpu-autoimageseg-v1.zip](https://pan.baidu.com/s/1i87dSXBIZADjNq0D4W9sAQ) (Extraction Code: u1jq)
+
+
 ## License
 This project is licensed under the Apache License 2.0. See the LICENSE file for details.
+
+
 
 
 ## Contact

@@ -1,15 +1,3 @@
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # -*- coding: utf-8 -*-
 
 ################################################################################
@@ -242,16 +230,16 @@ class Ui_TrainWindowMask(object):
         TrainWindowMask.setWindowTitle(QCoreApplication.translate("TrainWindowMask", u"Train Config", None))
         self.groupPaths.setTitle(QCoreApplication.translate("TrainWindowMask", u"Image Path", None))
         self.labelTrainImg.setText(QCoreApplication.translate("TrainWindowMask", u"Training Image Path\uff1a", None))
-        self.line_train_img.setText(QCoreApplication.translate("TrainWindowMask", u"G:\\2025-research-work\\autoimageseg\\datasets\\amd-sd\\train\\images", None))
+        self.line_train_img.setText("")
         self.btn_train_img.setText(QCoreApplication.translate("TrainWindowMask", u"Select", None))
         self.labelTrainJson.setText(QCoreApplication.translate("TrainWindowMask", u"Training Mask Path\uff1a", None))
-        self.line_train_mask.setText(QCoreApplication.translate("TrainWindowMask", u"G:\\2025-research-work\\autoimageseg\\datasets\\amd-sd\\train\\masks", None))
+        self.line_train_mask.setText("")
         self.btn_train_mask.setText(QCoreApplication.translate("TrainWindowMask", u"Select", None))
         self.labelTestImg.setText(QCoreApplication.translate("TrainWindowMask", u"Test Image Path\uff1a", None))
-        self.line_test_img.setText(QCoreApplication.translate("TrainWindowMask", u"G:\\2025-research-work\\autoimageseg\\datasets\\amd-sd\\test\\images", None))
+        self.line_test_img.setText("")
         self.btn_test_img.setText(QCoreApplication.translate("TrainWindowMask", u"Select", None))
         self.labelTestJson.setText(QCoreApplication.translate("TrainWindowMask", u"Test Mask Path\uff1a", None))
-        self.line_test_mask.setText(QCoreApplication.translate("TrainWindowMask", u"G:\\2025-research-work\\autoimageseg\\datasets\\amd-sd\\test\\masks", None))
+        self.line_test_mask.setText("")
         self.btn_test_mask.setText(QCoreApplication.translate("TrainWindowMask", u"Select", None))
         self.groupParams.setTitle(QCoreApplication.translate("TrainWindowMask", u"Training Setting", None))
         self.labelAlgo.setText(QCoreApplication.translate("TrainWindowMask", u"Algorithm:", None))

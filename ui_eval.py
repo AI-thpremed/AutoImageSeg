@@ -191,3 +191,4 @@ class Ui_EvalForm(object):
         self.btnEval.setText(QCoreApplication.translate("EvalForm", u"Make Evaluation", None))
     # retranslateUi
 
+        self.tablePolicy.horizontalHeader().setStretchLastSection(True)

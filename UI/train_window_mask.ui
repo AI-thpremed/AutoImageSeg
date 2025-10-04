@@ -32,7 +32,7 @@
         <item>
          <widget class="QLineEdit" name="line_train_img">
           <property name="text">
-           <string>G:\2025-research-work\autoimageseg\datasets\amd-sd\train\images</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -57,7 +57,7 @@
         <item>
          <widget class="QLineEdit" name="line_train_mask">
           <property name="text">
-           <string>G:\2025-research-work\autoimageseg\datasets\amd-sd\train\masks</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -82,7 +82,7 @@
         <item>
          <widget class="QLineEdit" name="line_test_img">
           <property name="text">
-           <string>G:\2025-research-work\autoimageseg\datasets\amd-sd\test\images</string>
+           <string></string>
           </property>
          </widget>
         </item>
@@ -107,7 +107,7 @@
         <item>
          <widget class="QLineEdit" name="line_test_mask">
           <property name="text">
-           <string>G:\2025-research-work\autoimageseg\datasets\amd-sd\test\masks</string>
+           <string></string>
           </property>
          </widget>
         </item>

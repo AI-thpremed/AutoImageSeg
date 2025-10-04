@@ -116,6 +116,8 @@ class Ui_InferWindow(object):
         self.retranslateUi(InferWindow)
 
         QMetaObject.connectSlotsByName(InferWindow)
+
+
     # setupUi
 
     def retranslateUi(self, InferWindow):
