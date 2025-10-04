@@ -13,6 +13,14 @@ AutoImageSeg is a zero-code, open-source image segmentation software that integr
 To get started with AutoImageSeg, you can clone the repository and run main.py.
 
 
+## Software Architecture
+
+![Software Architecture](image/software_architecture.png)
+
+![Software Train Page](image/train.png)
+
+
+
 ## Datasets
 The `datasets` folder contains the following datasets:
 
@@ -26,6 +34,7 @@ The `datasets` folder contains the following datasets:
   [Google Drive Link](https://drive.google.com/file/d/1vKsc7jah7bBFb0Eqi-luJUIu3fSEjE-j/view?usp=sharing)
   [grand-challenge](https://refuge.grand-challenge.org/)
 
+![Images](images/samples.png)
 
 
 ## Executable Files
@@ -41,6 +50,22 @@ Nuitka is recommended for packaging Python applications into standalone executab
 
 - **Google Drive**: [pytorch-gpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1be8jiUEMyk7Ngh6sF1qo67Fu12VHiQHq/view?usp=sharing)
 - **Baidu Cloud Disk**: [pytorch-gpu-autoimageseg-v1.zip](https://pan.baidu.com/s/1i87dSXBIZADjNq0D4W9sAQ) (Extraction Code: u1jq)
+
+
+These executable files have integrated the required PyTorch versions, so they can be run directly without additional setup.
+
+
+
+## Cache and Results
+
+- The software stores cache in the `cache` folder.
+- The results of the software are saved in the `results` folder.
+
+## Sample Files
+
+- A sample JSON file for segmentation label mapping is provided in `images/label_mapping_sample.json`.
+- The `config.json` file is required for the software to run.
+
 
 
 ## License
