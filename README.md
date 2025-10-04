@@ -15,9 +15,11 @@ To get started with AutoImageSeg, you can clone the repository and run main.py.
 
 ## Software Architecture
 
-![Software Architecture](images/software_architecture.PNG)
+<img src="images/software_architecture.PNG" width="300">
 
-![Software Train Page](images/train.PNG)
+## Software Train Page
+
+<img src="images/train.PNG" width="300">
 
 
 
