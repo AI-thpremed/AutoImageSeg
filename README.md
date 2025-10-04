@@ -15,9 +15,9 @@ To get started with AutoImageSeg, you can clone the repository and run main.py.
 
 ## Software Architecture
 
-![Software Architecture](image/software_architecture.png)
+![Software Architecture](images/software_architecture.PNG)
 
-![Software Train Page](image/train.png)
+![Software Train Page](images/train.PNG)
 
 
 
@@ -34,7 +34,7 @@ The `datasets` folder contains the following datasets:
   [Google Drive Link](https://drive.google.com/file/d/1vKsc7jah7bBFb0Eqi-luJUIu3fSEjE-j/view?usp=sharing)
   [grand-challenge](https://refuge.grand-challenge.org/)
 
-![Images](images/samples.png)
+![Images](images/samples.PNG)
 
 
 ## Executable Files
