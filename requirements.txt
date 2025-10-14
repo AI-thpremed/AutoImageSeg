@@ -1,0 +1,14 @@
+albumentations==2.0.8
+numpy==2.3.3
+opencv_python==4.12.0.88
+opencv_python_headless==4.12.0.88
+pandas==2.3.3
+Pillow==11.3.0
+pyside6==6.10.0
+pyside6_addons==6.10.0
+pyside6_essentials==6.10.0
+skimage==0.0
+thop==0.1.1.post2209072238
+torch==2.5.1
+torchvision==0.20.1
+tqdm==4.67.1
