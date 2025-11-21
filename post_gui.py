@@ -127,11 +127,16 @@ class PostWindow(QWidget, Ui_PostForm):
         threshold_image = self.config["labelme_conversion"].get("threshold_image",0)
 
 
-
-        mask_files = list(mask_dir.glob("*.png")) + list(mask_dir.glob("*.jpg")) + list(mask_dir.glob("*.jpeg"))
+        mask_files = [p for p in mask_dir.iterdir()
+                      if p.suffix.lower() in {'.png', '.jpg', '.jpeg', '.tif', '.tiff'}]
         if not mask_files:
-            QMessageBox.warning(self, "Warning", "No PNG, JPG, or JPEG files found in the mask directory")
+            QMessageBox.warning(self, "Warning", "Only support .png, .jpg, .jpeg, .tif, .tiff files.")
             return
+
+        # mask_files = list(mask_dir.glob("*.png")) + list(mask_dir.glob("*.jpg")) + list(mask_dir.glob("*.jpeg"))
+        # if not mask_files:
+        #     QMessageBox.warning(self, "Warning", "No PNG, JPG, or JPEG files found in the mask directory")
+        #     return
 
         post_count = self.config["restriction"].get("post_count", 1000)
 
@@ -266,11 +271,16 @@ class PostWindow(QWidget, Ui_PostForm):
             QMessageBox.warning(self, "Error", "The mask directory does not exist")
             return
 
-
-        mask_files = list(mask_dir.glob("*.png")) + list(mask_dir.glob("*.jpg")) + list(mask_dir.glob("*.jpeg"))
+        mask_files = [p for p in mask_dir.iterdir()
+                      if p.suffix.lower() in {'.png', '.jpg', '.jpeg', '.tif', '.tiff'}]
         if not mask_files:
-            QMessageBox.warning(self, "Warning", "No PNG, JPG, or JPEG files found in the mask directory")
+            QMessageBox.warning(self, "Warning", "Only support .png, .jpg, .jpeg, .tif, .tiff files.")
             return
+
+        # mask_files = list(mask_dir.glob("*.png")) + list(mask_dir.glob("*.jpg")) + list(mask_dir.glob("*.jpeg"))
+        # if not mask_files:
+        #     QMessageBox.warning(self, "Warning", "No PNG, JPG, or JPEG files found in the mask directory")
+        #     return
 
 
         if post_count > 0 and len(mask_files) > post_count:

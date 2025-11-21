@@ -20,7 +20,11 @@ from tqdm import tqdm
 import pandas as pd
 from utils.dataset import SegDataset
 # models
-from models.unet import U_Net
+from models.unet_base import UNet_Base
+from models.unet_medium import UNet_Medium
+from models.unet_small import UNet_Small
+from models.unet_tiny import UNet_Tiny
+
 from models.mobileunet import MobileUNet
 from models.fastscnn import FastSCNN
 from models.unext import UNext
@@ -31,7 +35,7 @@ from models.fcn import FCN
 from models.linknet import LinkNet
 from prepare_masks import prepare_masks_and_mapping
 from utils.metrics import compute_metrics
-from utils.losses import CE_DiceLoss, LovaszSoftmax, FocalLoss   # 你的文件
+from utils.losses import CE_DiceLoss, LovaszSoftmax, FocalLoss
 from config_manager import ConfigManager
 import random
 import numpy as np
@@ -115,7 +119,7 @@ def train_worker(cfg: dict, log_q):
     val_loss_df = pd.DataFrame(columns=['epoch', 'val_loss'])
 
     try:
-        prepare_masks_and_mapping(cfg)
+        prepare_masks_and_mapping(cfg,log)
 
 
 
@@ -134,7 +138,7 @@ def train_worker(cfg: dict, log_q):
 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        model_map = {'UNet': U_Net, 'MobileUNet': MobileUNet,
+        model_map = {'UNet_Base': UNet_Base,'UNet_Medium': UNet_Medium,'UNet_Small': UNet_Small,'UNet_Tiny': UNet_Tiny, 'MobileUNet': MobileUNet,
                      'FastSCNN': FastSCNN, 'UNext': UNext,'AttU_Net': AttU_Net,
                      'NestedUNet': NestedUNet,'UNetResnet': UNetResnet,
                      'FCN': FCN,'LinkNet': LinkNet}

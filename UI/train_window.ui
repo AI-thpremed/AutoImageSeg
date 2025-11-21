@@ -155,7 +155,22 @@
               </item>
               <item>
                   <property name="text">
-                      <string>UNet</string>
+                      <string>UNet_Base</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNet_Medium</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNet_Small</string>
+                  </property>
+              </item>
+              <item>
+                  <property name="text">
+                      <string>UNet_Tiny</string>
                   </property>
               </item>
               <item>

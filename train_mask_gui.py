@@ -197,29 +197,57 @@ class TrainMaskWindow(QWidget, Ui_TrainWindowMask):
         cfg = self.collect_cfg()
         self.training_mgr.start_training(cfg)
 
-
-
-
     def check_paths(self, cfg: Dict[str, str]) -> Optional[List[str]]:
-
         errors = []
 
+        # ---------- 1. 路径存在性 ----------
         path_keys = ["train_img", "train_mask", "test_img", "test_mask"]
         for k in path_keys:
             if not os.path.exists(cfg[k]):
                 errors.append(f"{k} path does not exist: {cfg[k]}")
-
         if errors:
             return errors
 
-        def _check_group(img_dir: str, mask_dir: str, tag: str, max_length: int, max_count: int):
+        # ---------- 2. 统一的内部函数 ----------
+        def _check_group(img_dir: str, mask_dir: str, tag: str,
+                         max_length: int, max_count: int):
             img_exts = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif"}
-            imgs = {os.path.splitext(f)[0]
-                    for f in os.listdir(img_dir)
-                    if os.path.splitext(f)[1].lower() in img_exts}
-            masks = {os.path.splitext(f)[0]
-                     for f in os.listdir(mask_dir)
-                     if os.path.splitext(f)[1].lower() in img_exts}
+
+            # 记录第一张合法图片/mask的后缀，用于统一性检查
+            ref_img_ext = None
+            ref_mask_ext = None
+
+            # 收集文件名（无后缀）的同时做后缀一致性检查
+            imgs = set()
+            for f in os.listdir(img_dir):
+                ext = os.path.splitext(f)[1].lower()
+                if ext not in img_exts:
+                    continue
+                name = os.path.splitext(f)[0]
+                imgs.add(name)
+
+                if ref_img_ext is None:
+                    ref_img_ext = ext
+                elif ext != ref_img_ext:
+                    errors.append(f"{tag} image directory has mixed extensions: found {ext} vs {ref_img_ext}")
+
+                    ref_img_ext = ext
+
+            masks = set()
+            for f in os.listdir(mask_dir):
+                ext = os.path.splitext(f)[1].lower()
+                if ext not in img_exts:
+                    continue
+                name = os.path.splitext(f)[0]
+                masks.add(name)
+
+                if ref_mask_ext is None:
+                    ref_mask_ext = ext
+                elif ext != ref_mask_ext:
+                    errors.append(f"{tag} mask directory has mixed extensions: found {ext} vs {ref_mask_ext}")
+                    ref_mask_ext = ext
+
+
 
             if len(imgs) != len(masks):
                 errors.append(
@@ -237,13 +265,18 @@ class TrainMaskWindow(QWidget, Ui_TrainWindowMask):
 
             if max_length > 0:
                 for f in os.listdir(img_dir):
-                    if os.path.splitext(f)[1].lower() in img_exts:
-                        img_path = os.path.join(img_dir, f)
-                        img = Image.open(img_path)
-                        width, height = img.size
-                        if max(width, height) > max_length:
-                            errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
+                    if os.path.splitext(f)[1].lower() not in img_exts:
+                        continue
+                    img_path = os.path.join(img_dir, f)
+                    try:
+                        with Image.open(img_path) as img:
+                            width, height = img.size
+                            if max(width, height) > max_length:
+                                errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
+                    except Exception as e:
+                        errors.append(f"{tag} read image {f} failed: {e}")
 
+        # ---------- 3. 训练集 / 测试集分别检查 ----------
         image_max_length = self.config["restriction"].get("image_max_length", 3000)
         train_count = self.config["restriction"].get("train_count", 1000)
         test_count = self.config["restriction"].get("test_count", 1000)
@@ -252,3 +285,59 @@ class TrainMaskWindow(QWidget, Ui_TrainWindowMask):
         _check_group(cfg["test_img"], cfg["test_mask"], "Test", image_max_length, test_count)
 
         return errors or None
+
+
+    #
+    #
+    # def check_paths(self, cfg: Dict[str, str]) -> Optional[List[str]]:
+    #
+    #     errors = []
+    #
+    #     path_keys = ["train_img", "train_mask", "test_img", "test_mask"]
+    #     for k in path_keys:
+    #         if not os.path.exists(cfg[k]):
+    #             errors.append(f"{k} path does not exist: {cfg[k]}")
+    #
+    #     if errors:
+    #         return errors
+    #
+    #     def _check_group(img_dir: str, mask_dir: str, tag: str, max_length: int, max_count: int):
+    #         img_exts = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif"}
+    #         imgs = {os.path.splitext(f)[0]
+    #                 for f in os.listdir(img_dir)
+    #                 if os.path.splitext(f)[1].lower() in img_exts}
+    #         masks = {os.path.splitext(f)[0]
+    #                  for f in os.listdir(mask_dir)
+    #                  if os.path.splitext(f)[1].lower() in img_exts}
+    #
+    #         if len(imgs) != len(masks):
+    #             errors.append(
+    #                 f"{tag} number of images ({len(imgs)}) does not match number of masks ({len(masks)})")
+    #
+    #         only_img = imgs - masks
+    #         only_mask = masks - imgs
+    #         if only_img:
+    #             errors.append(f"{tag} images missing corresponding mask files: {sorted(only_img)}")
+    #         if only_mask:
+    #             errors.append(f"{tag} mask files missing corresponding images: {sorted(only_mask)}")
+    #
+    #         if max_count > 0 and len(imgs) > max_count:
+    #             errors.append(f"{tag} number of images ({len(imgs)}) exceeds the maximum allowed ({max_count})")
+    #
+    #         if max_length > 0:
+    #             for f in os.listdir(img_dir):
+    #                 if os.path.splitext(f)[1].lower() in img_exts:
+    #                     img_path = os.path.join(img_dir, f)
+    #                     img = Image.open(img_path)
+    #                     width, height = img.size
+    #                     if max(width, height) > max_length:
+    #                         errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
+    #
+    #     image_max_length = self.config["restriction"].get("image_max_length", 3000)
+    #     train_count = self.config["restriction"].get("train_count", 1000)
+    #     test_count = self.config["restriction"].get("test_count", 1000)
+    #
+    #     _check_group(cfg["train_img"], cfg["train_mask"], "Train", image_max_length, train_count)
+    #     _check_group(cfg["test_img"], cfg["test_mask"], "Test", image_max_length, test_count)
+    #
+    #     return errors or None

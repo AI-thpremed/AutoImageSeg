@@ -83,5 +83,17 @@ We use Labelme for image annotation. It's a great tool and our JSON label format
 
 
 
+## Rebuild the Software
+
+use nuitka package to build the exe Software
+
+CPU version:
+ python -m nuitka --standalone --msvc=latest --enable-plugin=pyside6 --include-data-dir=G:\miniconda3\envs\pytorch_gpu\Lib\site-packages\PySide6\plugins=PySide6\qt-plugins --include-data-dir=G:\miniconda3\envs\pytorch_gpu\Lib\site-packages\torch\lib=torch\lib --output-dir=dist --windows-disable-console main.py
+
+
+GPU version:
+python -m nuitka --standalone --msvc=latest --enable-plugin=pyside6 --include-data-dir=G:\miniconda3\envs\pytorch_cpu\Lib\site-packages\PySide6\plugins=PySide6\qt-plugins --include-data-dir=G:\miniconda3\envs\pytorch_cpu\Lib\site-packages\torch\lib=torch\lib --include-data-file=introduction.ui=introduction.ui --output-dir=dist --windows-disable-console main.py
+
+
 ## Contact
 For any questions or issues, please feel free to contact us at [weihaomeva@163.com]

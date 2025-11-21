@@ -56,14 +56,12 @@ class up_conv(nn.Module):
         x = self.up(x)
         return x
 
-class U_Net(nn.Module):
-    """
-    Fixed U-Net: ConvTranspose2d + Sigmoid
-    """
+class UNet_Base(nn.Module):
+
     def __init__(self, in_ch=3, out_ch=4):
-        super(U_Net, self).__init__()
-        n1 = 64
-        filters = [n1, n1 * 2, n1 * 4, n1 * 8, n1 * 16]
+        super(UNet_Base, self).__init__()
+
+        filters = [64,128,256,512,1024]
 
         self.Maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.Conv1 = conv_block(in_ch, filters[0])
@@ -116,14 +114,14 @@ class U_Net(nn.Module):
         d2 = self.Up_conv2(d2)
 
         out = self.Conv(d2)
-        return self.sigmoid(out)  # 若用BCEWithLogitsLoss，改为 `return out`
 
+        return out
 
 
 
 if __name__ == "__main__":
 
-    model = U_Net(in_ch=3, out_ch=4)
+    model = UNet_Base(in_ch=3, out_ch=4)
 
 
     input_tensor = torch.randn(1, 3, 256, 256)

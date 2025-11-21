@@ -192,8 +192,6 @@ class TrainWindow(QWidget, Ui_TrainWindow):
 
 
 
-
-
     def check_paths(self, cfg: Dict[str, str]) -> Optional[List[str]]:
 
         errors = []
@@ -206,12 +204,28 @@ class TrainWindow(QWidget, Ui_TrainWindow):
         if errors:
             return errors
 
-        def _check_group(img_dir: str, json_dir: str, tag: str, max_length: int, max_count: int):
+        def _check_group(img_dir: str, json_dir: str, tag: str,
+                         max_length: int, max_count: int):
 
+            errors = []
             img_exts = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif"}
-            imgs = {os.path.splitext(f)[0]
-                    for f in os.listdir(img_dir)
-                    if os.path.splitext(f)[1].lower() in img_exts}
+            ref_ext = None  # 用于后缀统一性检查
+            imgs = set()
+
+            for f in os.listdir(img_dir):
+                ext = os.path.splitext(f)[1].lower()
+                if ext not in img_exts:
+                    continue
+                name = os.path.splitext(f)[0]
+                imgs.add(name)
+
+                # 后缀一致性检查
+                if ref_ext is None:
+                    ref_ext = ext
+                elif ext != ref_ext:
+                    errors.append(f"{tag} image directory has mixed extensions: found {ext} vs {ref_ext}")
+                    ref_ext = ext  # 避免重复提示
+
             jsons = {os.path.splitext(f)[0]
                      for f in os.listdir(json_dir)
                      if f.endswith(".json")}
@@ -232,12 +246,49 @@ class TrainWindow(QWidget, Ui_TrainWindow):
 
             if max_length > 0:
                 for f in os.listdir(img_dir):
-                    if os.path.splitext(f)[1].lower() in img_exts:
-                        img_path = os.path.join(img_dir, f)
-                        img = Image.open(img_path)
-                        width, height = img.size
-                        if max(width, height) > max_length:
-                            errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
+                    if os.path.splitext(f)[1].lower() not in img_exts:
+                        continue
+                    img_path = os.path.join(img_dir, f)
+                    try:
+                        with Image.open(img_path) as img:
+                            width, height = img.size
+                            if max(width, height) > max_length:
+                                errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
+                    except Exception as e:
+                        errors.append(f"{tag} read image {f} failed: {e}")
+
+        # def _check_group(img_dir: str, json_dir: str, tag: str, max_length: int, max_count: int):
+        #
+        #     img_exts = {".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif"}
+        #     imgs = {os.path.splitext(f)[0]
+        #             for f in os.listdir(img_dir)
+        #             if os.path.splitext(f)[1].lower() in img_exts}
+        #     jsons = {os.path.splitext(f)[0]
+        #              for f in os.listdir(json_dir)
+        #              if f.endswith(".json")}
+        #
+        #     if len(imgs) != len(jsons):
+        #         errors.append(
+        #             f"{tag} number of images ({len(imgs)}) does not match number of JSON files ({len(jsons)})")
+        #
+        #     only_img = imgs - jsons
+        #     only_json = jsons - imgs
+        #     if only_img:
+        #         errors.append(f"{tag} images missing corresponding JSON files: {sorted(only_img)}")
+        #     if only_json:
+        #         errors.append(f"{tag} JSON files missing corresponding images: {sorted(only_json)}")
+        #
+        #     if max_count > 0 and len(imgs) > max_count:
+        #         errors.append(f"{tag} number of images ({len(imgs)}) exceeds the maximum allowed ({max_count})")
+        #
+        #     if max_length > 0:
+        #         for f in os.listdir(img_dir):
+        #             if os.path.splitext(f)[1].lower() in img_exts:
+        #                 img_path = os.path.join(img_dir, f)
+        #                 img = Image.open(img_path)
+        #                 width, height = img.size
+        #                 if max(width, height) > max_length:
+        #                     errors.append(f"{tag} image {f} exceeds maximum allowed length ({max_length})")
 
         image_max_length = self.config["restriction"].get("image_max_length", 3000)
         train_count = self.config["restriction"].get("train_count", 1000)

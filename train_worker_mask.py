@@ -19,7 +19,13 @@ from tqdm import tqdm
 import pandas as pd
 from utils.dataset import SegDataset
 # models
-from models.unet import U_Net
+from models.unet_base import UNet_Base
+from models.unet_medium import UNet_Medium
+from models.unet_small import UNet_Small
+from models.unet_tiny import UNet_Tiny
+
+
+
 from models.mobileunet import MobileUNet
 from models.fastscnn import FastSCNN
 from models.unext import UNext
@@ -54,10 +60,7 @@ import torch.multiprocessing as mp
 
 def train_worker_mask(cfg: dict, log_q):
 
-    # mp.set_start_method('spawn')
-    # p = mp.Process(target=train_worker_mask, args=(cfg, log_q))
-    # p.start()
-    # p.join()
+
 
     config_manager = ConfigManager(config_path="config.json")
     config = config_manager.config
@@ -119,7 +122,7 @@ def train_worker_mask(cfg: dict, log_q):
 
     try:
 
-        prepare_masks_and_mapping_mask(cfg)
+        prepare_masks_and_mapping_mask(cfg,log)
 
 
 
@@ -139,7 +142,7 @@ def train_worker_mask(cfg: dict, log_q):
 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        model_map = {'UNet': U_Net, 'MobileUNet': MobileUNet,
+        model_map = {'UNet_Base': UNet_Base,'UNet_Medium': UNet_Medium,'UNet_Small': UNet_Small,'UNet_Tiny': UNet_Tiny, 'MobileUNet': MobileUNet,
                      'FastSCNN': FastSCNN, 'UNext': UNext,'AttU_Net': AttU_Net,
                      'NestedUNet': NestedUNet,'UNetResnet': UNetResnet,
                      'FCN': FCN,'LinkNet': LinkNet}

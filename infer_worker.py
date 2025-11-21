@@ -20,7 +20,6 @@ from pathlib import Path
 from torch.utils.data import DataLoader
 from queue import Queue
 from tqdm import tqdm
-from models.unet import U_Net
 from models.mobileunet import MobileUNet
 from models.fastscnn import FastSCNN
 from models.unext import UNext
@@ -31,8 +30,12 @@ from models.fcn import FCN
 from models.linknet import LinkNet
 from utils.dataset import SegDataset
 from config_manager import ConfigManager
+from models.unet_base import UNet_Base
+from models.unet_medium import UNet_Medium
+from models.unet_small import UNet_Small
+from models.unet_tiny import UNet_Tiny
 
-
+import time
 
 
 # -------------------- log --------------------
@@ -113,8 +116,7 @@ def infer_worker(cfg: dict, log_q: Queue):
     log_path = res_dir / 'inference.log'
     log_file = open(log_path, 'a', encoding='utf-8')
 
-
-
+    t0 = time.time()
     try:
         log("=== start ===")
 
@@ -139,10 +141,13 @@ def infer_worker(cfg: dict, log_q: Queue):
         log(f"Label id map load success：{label2id}")
 
 
-        model_map = {'UNet': U_Net, 'MobileUNet': MobileUNet,
-                     'FastSCNN': FastSCNN, 'UNext': UNext, 'AttU_Net': AttU_Net,
-                     'NestedUNet': NestedUNet, 'UNetResnet': UNetResnet,
-                     'FCN': FCN, 'LinkNet': LinkNet}
+        model_map = {'UNet_Base': UNet_Base,'UNet_Medium': UNet_Medium,'UNet_Small': UNet_Small,'UNet_Tiny': UNet_Tiny, 'MobileUNet': MobileUNet,
+                     'FastSCNN': FastSCNN, 'UNext': UNext,'AttU_Net': AttU_Net,
+                     'NestedUNet': NestedUNet,'UNetResnet': UNetResnet,
+                     'FCN': FCN,'LinkNet': LinkNet}
+
+
+
         ModelCls = model_map[algo]
 
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -196,3 +201,7 @@ def infer_worker(cfg: dict, log_q: Queue):
         log(f"Inference error: {e}\n{tb}", to_ui=True)
         log(None)
 
+    finally:
+        elapsed = time.time() - t0
+        log(f"Inference total elapsed time: {elapsed:.2f} s")
+        log(None)
