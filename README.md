@@ -45,16 +45,22 @@ Nuitka is recommended for packaging Python applications into standalone executab
 
 ### CPU Version
 
-- **Google Drive**: [pytorch-cpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1KmSBrP5MwUPEJE4tAe3rZagi7YcCPs5O/view?usp=sharing)
-- **Baidu Cloud Disk**: [pytorch-cpu-autoimageseg-v1.zip](https://pan.baidu.com/s/16bVB5pPOu2E-zx-Q_ERAUQ) (Extraction Code: 5zwq)
+- **Google Drive**: [pytorch-cpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1_8OcrtOSHaRNNQMvUWcZRo66xd62o-HE/view?usp=sharing)
+- **Baidu Cloud Disk**: [pytorch-cpu-autoimageseg-v1.zip](pytorch_cpu_AutoImageSeg_v1.zip https://pan.baidu.com/s/1YkQGALaMAjO-apx00iqxHw ) (Extraction Code: d1i3)
 
 ### GPU Version
 
-- **Google Drive**: [pytorch-gpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1be8jiUEMyk7Ngh6sF1qo67Fu12VHiQHq/view?usp=sharing)
-- **Baidu Cloud Disk**: [pytorch-gpu-autoimageseg-v1.zip](https://pan.baidu.com/s/1i87dSXBIZADjNq0D4W9sAQ) (Extraction Code: u1jq)
+- **Google Drive**: [pytorch-gpu-autoimageseg-v1.zip](https://drive.google.com/file/d/1csCsnIvAeDTQ_JpWRMqOs_Fhe0pA59hC/view?usp=sharing)
+- **Baidu Cloud Disk**: [pytorch-gpu-autoimageseg-v1.zip](pytorch_gpu_AutoImageSeg_v1.zip https://pan.baidu.com/s/1vnAlJIhjD78UIn3UnwjXlg ) (Extraction Code: bub2)
 
 
 These executable files have integrated the required PyTorch versions, so they can be run directly without additional setup.
+
+Instructional Video on Usage Process:
+
+https://drive.google.com/file/d/1-p7K1IG6OEgGaU9eLmwSVV3EhOw0Zb-A/view?usp=sharing
+
+
 
 
 
