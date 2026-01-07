@@ -103,3 +103,23 @@ python -m nuitka --standalone --msvc=latest --enable-plugin=pyside6 --include-da
 
 ## Contact
 For any questions or issues, please feel free to contact us at [weihaomeva@163.com]
+
+
+
+## Citation
+If you use AutoImageSeg in your research, please cite our SoftwareX paper:
+
+```bibtex
+@article{GAO2026102491,
+title = {AutoImageSeg: A zero-code image segmentation software toolkit},
+journal = {SoftwareX},
+volume = {33},
+pages = {102491},
+year = {2026},
+issn = {2352-7110},
+doi = {https://doi.org/10.1016/j.softx.2025.102491},
+url = {https://www.sciencedirect.com/science/article/pii/S2352711025004571},
+author = {Weihao Gao and Jiarou Lu},
+keywords = {Zero-code image segmentation, Open-source toolkit, AI-driven annotation, PyTorch-based models},
+abstract = {AutoImageSeg is a zero-code, open-source image segmentation software toolkit that integrates nine mainstream models. It offers a closed-loop workflow encompassing training, inference, evaluation, and re-annotation. Through its graphical user interface (GUI), users can effortlessly benchmark models, predict new data, and auto-generate editable LabelMe labels—all without any programming. This streamlined process facilitates rapid iteration and high-quality ground-truth accumulation, especially in small-sample scenarios. By accelerating dataset construction across multiple domains, AutoImageSeg serves as a powerful tool for both researchers and industry professionals.}
+}
