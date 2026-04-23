@@ -1,5 +1,8 @@
 # AutoImageSeg: Zero-code Image Segmentation
 
+
+source: https://www.sciencedirect.com/science/article/pii/S2352711025004571
+
 ## Project Description
 AutoImageSeg is a zero-code, open-source image segmentation software that integrates nine mainstream PyTorch models and provides a closed loop of "train-inference-evaluate-back-annotate". Without any programming, users can benchmark models, predict new data, and auto-generate editable LabelMe labels via a graphical interface, enabling rapid iteration and high-quality ground-truth accumulation in small-sample scenarios.
 
