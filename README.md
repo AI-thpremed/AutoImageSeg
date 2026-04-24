@@ -3,6 +3,9 @@
 
 source: https://www.sciencedirect.com/science/article/pii/S2352711025004571
 
+
+
+
 ## Project Description
 AutoImageSeg is a zero-code, open-source image segmentation software that integrates nine mainstream PyTorch models and provides a closed loop of "train-inference-evaluate-back-annotate". Without any programming, users can benchmark models, predict new data, and auto-generate editable LabelMe labels via a graphical interface, enabling rapid iteration and high-quality ground-truth accumulation in small-sample scenarios.
 
@@ -102,6 +105,10 @@ CPU version:
 
 GPU version:
 python -m nuitka --standalone --msvc=latest --enable-plugin=pyside6 --include-data-dir=G:\miniconda3\envs\pytorch_cpu\Lib\site-packages\PySide6\plugins=PySide6\qt-plugins --include-data-dir=G:\miniconda3\envs\pytorch_cpu\Lib\site-packages\torch\lib=torch\lib --include-data-file=introduction.ui=introduction.ui --output-dir=dist --windows-disable-console main.py
+
+## FAQ
+
+The absolute value addresses of datasets or software itself cannot contain non English characters.
 
 
 ## Contact
